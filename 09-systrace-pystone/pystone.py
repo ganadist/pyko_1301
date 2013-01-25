@@ -69,6 +69,8 @@ def main(loops=LOOPS):
     pool.map(pystones,(per_loop, ) * jobs )
 
     benchtime = clock() - starttime
+    if not benchtime:
+        benchtime = 0.001
     stones = (per_loop * jobs/ benchtime)
 
     print "Pystone(%s) time for %d passes = %g" % \
